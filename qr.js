@@ -1,7 +1,7 @@
 const venom = require('venom-bot');
 
 venom
-  .create('sessionName')
+  .create('dev')
   .then((client) => start(client))
   .catch((erro) => {
     console.log(erro);

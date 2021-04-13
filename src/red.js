@@ -1,6 +1,8 @@
 const request = require("request");
 
-module.exports.redpesquisa = (query_) => new Promise((re,err)=>{
+
+
+const redpesquisa = (query_) => new Promise((re,err)=>{
     var options = {
         method: 'GET',
         url: 'https://services.redacaonota1000.com.br/api/v2/temas',
@@ -33,7 +35,7 @@ module.exports.redpesquisa = (query_) => new Promise((re,err)=>{
       
 });
 
-module.exports.redid = (id) => new Promise((re,err)=>{
+const redid = (id) => new Promise((re,err)=>{
 
     var options = {
       method: 'GET',
@@ -66,3 +68,110 @@ module.exports.redid = (id) => new Promise((re,err)=>{
     
       
 });
+
+module.exports.red = (client, message, rere) => new Promise(async(re,err)=>{
+  if (message.body.includes("/Redid") || message.body.includes("/redid")) {
+    client.startTyping(message.from);
+
+const { data } = await redid(message.body.split(' ')[1]);
+var desc;
+if(data.descricao){
+desc = '\n\nDescrição: '+data.descricao;
+}else{
+desc = '';
+}
+  await  client
+      .sendText(message.from, 
+`Tema: *${data.titulo}*
+
+Modelo: *${data.genero.nome}*${desc}
+
+Id: ${data.id}; link: pedroaf0.cf/bot/#/Redid%20${data.id}`
+        )
+      .then((result) => {
+       // console.log('Result: ', result); //return object success
+      })
+      .catch((erro) => {
+        console.error('Error when sending: ', erro); //return object error
+      });
+
+      await client
+            .sendImage(
+              message.from,
+              data.endImagem,
+              data.titulo,
+            )
+            .then((result) => {
+              console.log('Result: ', result); //return object success
+            })
+            .catch((erro) => {
+              console.error('Error when sending: ', erro);
+              client.sendText(message.from, 'não foi possível enviar a imagem')
+              //return object error
+            });
+re(rere)
+  }
+
+  if (message.body.includes("/Redtema") || message.body.includes("/redtema")) {
+    client.startTyping(message.from);
+
+const { data } = await redid(Math.round(Math.random()*100));
+var desc;
+if(data.descricao){
+desc = '\n\nDescrição: '+data.descricao;
+}else{
+desc = '';
+}
+  await  client
+      .sendText(message.from, 
+`Tema: *${data.titulo}*
+
+Modelo: *${data.genero.nome}*${desc}
+
+Id: ${data.id}; link: pedroaf0.cf/bot/#/Redid%20${data.id}`
+        )
+      .then((result) => {
+       // console.log('Result: ', result); //return object success
+      })
+      .catch((erro) => {
+        console.error('Error when sending: ', erro);
+         //return object error
+         client.sendText(message.from, 'não foi possível enviar a imagem')
+      });
+
+      await client
+            .sendImage(
+              message.from,
+              data.endImagem,
+              data.titulo,
+            )
+            .then((result) => {
+              console.log('Result: ', result); //return object success
+            })
+            .catch((erro) => {
+              console.error('Error when sending: ', erro); //return object error
+            });
+re(rere)
+  }
+
+if (message.body.includes("/redpesquisa")) {
+    client.startTyping(message.from);
+
+    const { data } = await redpesquisa(message.body.split('/redpesquisa').join(''));
+    var _message = `*Resultado da pesquisa:* ${message.body.split('/redpesquisa ').join('')}`;
+    for (let index = 0; index < data.length; index++) {
+      _message += `\n\nTema: *${data[index].titulo}*\nId: ${data[index].id}; link: pedroaf0.cf/bot/#/Redid%20${data[index].id}`
+    }
+      console.log(_message)
+
+    client
+      .sendText(message.from, _message)
+      .then((result) => {
+       // console.log('Result: ', result); //return object success
+      })
+      .catch((erro) => {
+        console.error('Error when sending: ', erro); //return object error
+      });
+      re(rere)
+  }
+})
