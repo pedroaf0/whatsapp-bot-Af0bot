@@ -9,17 +9,14 @@ const { red } = require('./src/red.js')
 const { search } = require('./src/search.js')
 
 const { doe, help } = require('./src/long_message.js')
-const await_ =  (s)=> new Promise((re,err)=>{
-  console.log(s)
-  setTimeout(()=>{console.log("done"); re();}, s);
-});
+
 
 
 async function a(){
   
 venom
   .create(
-    'dev',    
+    'prod',    
     
     (base64Qrimg, asciiQR, attempts, urlCode) => {
     console.log('urlCode (data-ref): ', urlCode);
@@ -49,7 +46,7 @@ async function start(client) {
 
   client.onMessage((message) => new Promise(async(re,err)=>{
     //anti trava zap
-    if (message.type == 'oversized' || message.body.length > 500 ){  
+    if (message.type == 'oversized' ){  
       await client.blockContact(message.from);
       await client.deleteMessage(message.from, [message.id.toString()])
       await client.clearChatMessages([message.chatId]);

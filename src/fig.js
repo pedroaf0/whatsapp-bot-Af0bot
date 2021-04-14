@@ -1,6 +1,10 @@
 const mime = require('mime-types');
 const Jimp = require("jimp");
 const fs = require('fs');
+const await_ =  (s)=> new Promise((re,err)=>{
+  console.log(s)
+  setTimeout(()=>{console.log("done"); re();}, s);
+});
 
 module.exports.fig = (client, message, rere) => new Promise(async(re,err)=>{
     
@@ -37,6 +41,7 @@ module.exports.fig = (client, message, rere) => new Promise(async(re,err)=>{
         console.error('Error when sending: ', erro); //return object error
       });
       fs.unlinkSync('figurinha.jpg');
+      fs.unlinkSync(`figurinha.${mime.extension(message.mimetype)}`);
          } catch (error) {
             await client.reply(
               message.from,
