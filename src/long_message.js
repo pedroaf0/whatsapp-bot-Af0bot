@@ -41,7 +41,7 @@ module.exports.doe =
 `*Obrigado pelo interesse*
 
 Se você acredita que a tecnologia pode mudar a educação e o mundo
-faça uma doação em: https://picpay.me/pedroaf0
+faça uma doação em: pedroaf0.cf/pix
 _Coloque na descrição que você está doando para o bot_
 
 O dinheiro arrecadado será usado para colocar o bot em um servidor contínuo. Dessa forma ele ficará sempre online, ajudando assim quem que só tem o whatsapp ilimitado nos dados móveis
