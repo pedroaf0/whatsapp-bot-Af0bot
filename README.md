@@ -1,4 +1,7 @@
 # whatsapp-bot-pedroaf0bot
+
+Teste aqui: <a href="https://www.pedroaf0.cf/bot">pedroaf0.cf/bot</a>
+
 Saiba mais em: https://pedroaf0.medium.com/bot-de-whatsapp-ajuda-estudantes-com-internet-limitada-7fcc938441b6
 
 ---
