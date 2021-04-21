@@ -5,7 +5,7 @@ module.exports.books = (client, message, rere) => new Promise(async(re,err)=>{
 
         var options = {
           method: 'GET',
-          url: 'https://api.polemicnews.com/search/books',
+          url: 'https://plmcbks.amanoteam.com/search/books',
           qs: {
             query_name: message.body.split('/busquelivro ').join(''),
             search_type: 'fast',
@@ -23,7 +23,7 @@ _Use /baixarlivro <id> para baixar o livro_
 \`\`\`Ex: /baixarlivro 15\`\`\``
           for (let index = 0; index < body.results.items.length; index++) {
               const element = body.results.items[index];
-              if (element.type.id == 2){
+              if (element.type.id == 2 & element.documents[0].file_extension != 'markdown'){
               var editora = '', autor = '';
               if (element.author !== null){autor = `\n*Autor(a):* ${element.author.name}`;}else{autor = ''; editora = '\n'}
               if (element.publisher !== null){editora += `*Editora:* ${element.publisher.name}`;}else{editora = '';}
@@ -43,9 +43,10 @@ _Use /baixarlivro <id> para baixar o livro_
         re(rere)
     }
     if (message.body.includes("/baixarlivro")){
-      var options = {
+      try {
+              var options = {
         method: 'GET',
-        url: `https://api.polemicnews.com/books/${message.body.split('/baixarlivro ').join('')}`
+        url: `https://plmcbks.amanoteam.com/books/${message.body.split('/baixarlivro ').join('')}`
       };
       
       request(options, async function (error, response, body) {
@@ -53,7 +54,7 @@ _Use /baixarlivro <id> para baixar o livro_
         console.log(body)
         console.log("baixar")
         const element = body;
-        if (element.type.id == 2){
+        if (element.type.id == 2 & element.documents[0].file_extension != 'markdown'){
         var editora = '', autor = '', sera;
         if (element.author !== null){autor = `\n*Autor(a):* ${element.author.name}`;}else{autor = ''; editora = '\n'}
         if (element.publisher !== null){editora += `*Editora:* ${element.publisher.name}`;}else{editora = '';}
@@ -68,7 +69,7 @@ Você saberá a resposta em breve 🙃`
         await client
         .sendFile(
           message.from,
-          `https://api.polemicnews.com/download/${element.documents[0].id}`,
+          `https://plmcbks.amanoteam.com/download/${element.documents[0].id}`,
           `${element.title}`,
           `${element.title}${autor} ${editora}`
         )
@@ -82,5 +83,9 @@ Você saberá a resposta em breve 🙃`
         client.sendText(message.from, `Não deu, tente baixar em outro formato`);
       }
     })
+  } catch (error) {
+    client.sendText(message.from, `Não deu, tente baixar em outro formato`);
+
+  }
 }
 })
