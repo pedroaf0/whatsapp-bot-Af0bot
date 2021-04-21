@@ -42,7 +42,7 @@ async function start(client) {
   time[0] = setTimeout(()=>{client.setProfilePic('profile/tired.jpg');}, 20*60*1000);
   time[1] = setTimeout(()=>{client.setProfileStatus('To desligando 🙂');}, 20*60*1000);
   time[2] = setTimeout(()=>{client.setProfilePic('profile/sleeping.jpg');}, 29*60*1000);
-  time[3] = setTimeout(()=>{client.setProfileStatus('😴 eu acordo às 6:00 AM');}, 29*60*1000);
+  time[3] = setTimeout(()=>{client.setProfileStatus('😴');}, 30*60*1000);
 
   client.onMessage((message) => new Promise(async(re,err)=>{
     //anti trava zap
@@ -102,9 +102,9 @@ for (let index = 0; index < time.length; index++) {
 }
 
   time[0] = setTimeout(()=>{client.setProfilePic('profile/tired.jpg');}, 20*60*1000);
-  time[1] = setTimeout(()=>{client.setProfileStatus('To desligando 🙂');}, 20*60*1000);
+  time[1] = setTimeout(()=>{client.setProfileStatus('🙂');}, 20*60*1000);
   time[2] = setTimeout(()=>{client.setProfilePic('profile/sleeping.jpg');}, 29*60*1000);
-  time[3] = setTimeout(()=>{client.setProfileStatus('😴 ligue-me no link acima ⬆️');}, 29*60*1000);
+  time[3] = setTimeout(()=>{client.setProfileStatus('A mimir 😴 eu acordo às 6:00 AM');}, 30*60*1000-10);
   res.send('O bot de zap está rodando agora ;)');
 });
 server.listen(process.env.PORT || 3000)
