@@ -1,6 +1,6 @@
 # whatsapp-bot-pedroaf0bot
 
-Teste aqui: <a href="https://www.pedroaf0.cf/bot/#/help=vim%20pelo%20git">pedroaf0.cf/bot</a>
+Teste aqui: <a href="https://www.pedroaf0.cf/bot/#/help%20vim%20pelo%20git">pedroaf0.cf/bot</a>
 
 Saiba mais em: https://pedroaf0.medium.com/bot-de-whatsapp-ajuda-estudantes-com-internet-limitada-7fcc938441b6
 
