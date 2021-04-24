@@ -16,7 +16,7 @@ async function a(){
   
 venom
   .create(
-    'prod',    
+    'dev',    
     
     (base64Qrimg, asciiQR, attempts, urlCode) => {
     console.log('urlCode (data-ref): ', urlCode);
