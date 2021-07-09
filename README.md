@@ -1,4 +1,4 @@
-# whatsapp-bot-pedroaf0bot
+# whatsapp-bot-Af0bot
 
 Bot desativado pois o número foi banido 
 Sinta se livre para criar a sua própria versão
